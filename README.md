@@ -63,15 +63,11 @@ Entering one of these commands into the command prompt will create Docker contai
 ### <div align="center" name="all-tasks">Get All Tasks</div>
 Returns a list of all tasks.
 
-- **URL**
-    /v1/tasks
-- **Method**
-    `GET`
-- **URL Params**
-    None.
-- **Request Body**
-    None.
-- **Success Response**
+- **URL**: /v1/tasks
+- **Method**: `GET`
+- **URL Params**: None.
+- **Request Body**: None.
+- **Success Response**:
     - **Code**: 200
 
       **Response**: 
@@ -97,23 +93,11 @@ Returns a list of all tasks.
 ### <div align="center" name="all-tasks">Get Task By ID</div>
 Returns a task by its ID.
 
-- **URL**
-
-    /v1/tasks
-
-- **Method**
-
-    `GET`
-
-- **URL Params**
-
-    `id=[integer]`
-
-- **Request Body**
-
-    None.
-
-- **Success Response**
+- **URL**: /v1/tasks
+- **Method**: `GET`
+- **URL Params** `id=[integer]`
+- **Request Body**: None.
+- **Success Response**:
     - **Code**: 200
 
       **Response**: 
@@ -133,7 +117,7 @@ Returns a task by its ID.
     }
 ```
 
-- **Error Response**
+- **Error Response**:
     - **Code**: 404 Not Found
 
       **Response**:
