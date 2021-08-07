@@ -65,7 +65,6 @@ Returns a list of all tasks.
 
 - **URL**: /v1/tasks
 - **Method**: `GET`
-- **URL Params**: None.
 - **Request Body**: None.
 - **Success Response**:
     - **Code**: 200
@@ -90,12 +89,11 @@ Returns a list of all tasks.
 - **Error Response**
     None.
 
-### <div align="center" name="all-tasks">Get Task By ID</div>
+### <div align="center" name="task-by-id">Get Task By ID</div>
 Returns a task by its ID.
 
-- **URL**: /v1/tasks
+- **URL**: /v1/tasks/:id
 - **Method**: `GET`
-- **URL Params** `id=[integer]`
 - **Request Body**: None.
 - **Success Response**:
     - **Code**: 200
@@ -128,3 +126,68 @@ Returns a task by its ID.
         "message": "Task not found"
     }
 ```
+
+### <div align="center" name="tracked-task">Get Tracked Task</div>
+Returns a currently tracked task.
+
+- **URL**: /v1/tasks/current
+- **Method**: `GET`
+- **Request Body**: None.
+- **Success Response**:
+    - **Code**: 200
+
+      **Response**: 
+
+```
+    {
+        "task": {
+            "id": 1,
+            "name": "pet THE cat",
+            "tracked": true,
+            "createdAt": "2021-08-07T22:56:21.243Z",
+            "startedAt": "2021-08-07T23:09:30.679Z",
+            "finishedAt": null
+        }
+    }
+```
+
+- **Error Response**:
+    - **Code**: 404 Not Found
+
+      **Response**:
+
+```
+    {
+        "statusCode": 404,
+        "message": "Task not found"
+    }
+```
+
+### <div align="center" name="create-task">Create Task</div>
+Creates a new task.
+
+- **URL**: /v1/tasks
+- **Method**: `POST`
+- **Request Body**:
+    - **Parameters**:
+        `name` - sets a taks's name (required)
+        `tracked` - sets whether a task is tracked (optional)
+- **Success Response**:
+    - **Code**: 201
+
+      **Response**: 
+
+```
+    {
+        "task": {
+            "name": "Take out trash",
+            "startedAt": null,
+            "finishedAt": null,
+            "id": 2,
+            "tracked": false,
+            "createdAt": "2021-08-07T22:56:21.243Z"
+        }
+    }
+```
+
+- **Error Response**: None.
