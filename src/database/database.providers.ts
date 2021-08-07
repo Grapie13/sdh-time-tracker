@@ -11,7 +11,7 @@ const databaseProviders = [
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       entities: [__dirname + '/../entities/*.entity.{ts,js}'],
-      synchronize: process.env.NODE_ENV !== 'production'
+      synchronize: true // TODO: Learn how to do migrations when using NestJS.
     })
   }
 ];

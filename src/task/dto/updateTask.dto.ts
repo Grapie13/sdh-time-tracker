@@ -2,7 +2,7 @@
 // because strict checking is enabled in tsconfig.
 class UpdateTaskDto {
   id!: number;
-  newTaskName?: string;
+  name?: string;
   tracked?: boolean;
 }
 
