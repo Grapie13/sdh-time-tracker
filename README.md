@@ -2,18 +2,18 @@
 
 ------------
 
-## About
+## <p align="center"></p>About
 This is a straigh-forward time tracker backend API meant for a single user. It is not meant for use in a production environment.
 
 ------------
 
-## Installation
+## <p align="center">Installation</p>
 *** Docker is required for these installation instructions.**
 
-#### Database:
+#### <p align="center">Database:</p>
 SDH-Time-Tracker uses Postgres to store tasks.
 
-#### Environmental variables:
+#### <p align="center">Environmental variables:</p>
 This application uses the following environmental variables:
 - **APP_PORT** - Determines which port the application will run on.
 - **POSTGRES_HOSTNAME** - Hostname for Postgres connection.
@@ -26,16 +26,16 @@ This application uses the following environmental variables:
 
 Environmental variables can be passed in the command line when creating the Docker containers or inside a .env file.
 
-#### Installation process:
+#### <p align="center">Installation process:</p>
 * It is assumed that environmental variables are stored inside a .env file in a config direction inside the root directory.
 Firstly, open the command prompt in the root directory of the application. After this is done, use one of the following commands:
 
-For development instance of the application:
+<p align="center">For development instance of the application:</p>
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file=./config/.env up -d
 ```
 
-For production instance of the application:
+<p align="center">For production instance of the application:</p>
 ```
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env-file=./config/.env up -d
 ```
@@ -44,4 +44,4 @@ Entering one of these commands into the command prompt will create Docker contai
 
 ------------
 
-## API
+## <p align="center">API</p>
