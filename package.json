@@ -7,15 +7,14 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "ts-mocha --parallel --file \"./test/unit/*.spec.ts\"",
-    "test:cov": "nyc ts-mocha --parallel --file \"./test/unit/*.spec.ts\"",
-    "test:e2e": "ts-mocha --parallel --file \"./test/integration/*.e2e.ts\""
+    "test": "ts-mocha --parallel \"./test/unit/*.spec.ts\"",
+    "test:cov": "nyc ts-mocha --parallel \"./test/unit/*.spec.ts\"",
+    "test:e2e": "ts-mocha --parallel \"./test/integration/*.e2e.ts\""
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -38,6 +37,7 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
+    "got": "^11.8.2",
     "mocha": "^8.4.0",
     "sinon-chai": "^3.7.0",
     "ts-jest": "^27.0.3",
