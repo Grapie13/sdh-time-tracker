@@ -1,7 +1,6 @@
 # <div align="center" name="title">SDH-Time-Tracker</div> #
 
 ## <div align="center" name="contents">Table of Contents</div> ##
-<div align="center">
 
 1. [ Title ](#title)
 2. [ Table of Contents ](#contents)
@@ -11,8 +10,6 @@
   2. [ Environmental Variables ](#variables)
   3. [ Installation Process ](#process)
 5. [ API ](#api)
-
-</div>
 
 ## <div align="center" name="about"></div>About ##
 This is a straigh-forward time tracker backend API meant for a single user. It is not meant for use in a production environment.
