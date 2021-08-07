@@ -1,13 +1,13 @@
-# <p align="center">SDH-Time-Tracker</p>
+# <div align="center">SDH-Time-Tracker</div>
 
 ------------
 
-## <p align="center"></p>About
+## <div align="center"></div>About
 This is a straigh-forward time tracker backend API meant for a single user. It is not meant for use in a production environment.
 
 ------------
 
-## <p align="center">Installation</p>
+## <div align="center">Installation</div>
 
 <div align="center">
 
@@ -15,10 +15,10 @@ This is a straigh-forward time tracker backend API meant for a single user. It i
 
 </div>
 
-### <p align="center">Database:</p>
+### <div align="center">Database:</div>
 SDH-Time-Tracker uses Postgres to store tasks.
 
-### <p align="center">Environmental variables:</p>
+### <div align="center">Environmental variables:</div>
 This application uses the following environmental variables:
 - **APP_PORT** - Determines which port the application will run on.
 - **POSTGRES_HOSTNAME** - Hostname for Postgres connection.
@@ -31,17 +31,17 @@ This application uses the following environmental variables:
 
 Environmental variables can be passed in the command line when creating the Docker containers or inside a .env file.
 
-### <p align="center">Installation process:</p>
+### <div align="center">Installation process:</div>
 * It is assumed that environmental variables are stored inside a .env file in a config direction inside the root directory.
 Firstly, open the command prompt in the root directory of the application. After this is done, use one of the following commands:
 
-<p align="center">For development instance of the application:</p>
+<div align="center">For development instance of the application:</div>
 
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file=./config/.env up -d
 ```
 
-<p align="center">For production instance of the application:</p>
+<div align="center">For production instance of the application:</div>
 
 ```
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env-file=./config/.env up -d
@@ -51,4 +51,4 @@ Entering one of these commands into the command prompt will create Docker contai
 
 ------------
 
-## <p align="center">API</p>
+## <div align="center">API</div>
