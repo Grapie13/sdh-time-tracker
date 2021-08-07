@@ -25,9 +25,7 @@ export class TaskService {
   }
 
   async getTrackedTask(): Promise<Task | undefined> {
-    return this.taskRepository.findOne({
-      where: { tracked: true }
-    });
+    return this.taskRepository.findOne({ tracked: true });
   }
 
   async createTask(taskDto: CreateTaskDto): Promise<Task> {

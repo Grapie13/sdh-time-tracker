@@ -30,13 +30,13 @@ class Task {
     type: 'timestamptz',
     default: null
   })
-  startedAt!: string; // Same as createdAt
+  startedAt!: string | null; // startedAt can be null, because we can create a task that is not tracked
 
   @Column({
     type: 'timestamptz',
     default: null
   })
-  finishedAt!: string; // Same as createdAt
+  finishedAt!: string | null; // finishedAt can be null, because tasks cannot be finished when created
 }
 
 export { Task };
