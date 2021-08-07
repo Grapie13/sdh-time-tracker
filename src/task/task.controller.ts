@@ -5,7 +5,7 @@ import { UpdateTaskDto } from './dto/updateTask.dto';
 import { TaskArray, SingleTask, DeletedTaskMsg } from 'src/utils/interfaces/task.interfaces';
 import { Task } from 'src/entities/Task.entity';
 
-@Controller('/v1/task')
+@Controller('/v1/tasks')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
