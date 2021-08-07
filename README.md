@@ -73,4 +73,19 @@ Returns a list of all tasks.
     None.
 - **Success Response**
     - **Code**: 200
-      **Response**: `{ tasks: [{ id: 1, name: "Test task", tracked: false }] }`
+      **Response**: 
+
+      ```
+            {
+                "tasks": [
+                    {
+                        "id": 1,
+                        "name": "take out trash",
+                        "tracked": false,
+                        "createdAt": "2021-08-07T22:56:21.243Z",
+                        "startedAt": null,
+                        "finishedAt": null
+                    }
+                ]
+            }
+      ```
