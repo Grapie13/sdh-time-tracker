@@ -1,7 +1,5 @@
 # <div align="center" name="title">SDH-Time-Tracker</div> #
 
-------------
-
 ## <div align="center" name="contents">Table of Contents</div> ##
 <div align="center">
 
@@ -16,12 +14,8 @@
 
 </div>
 
-------------
-
 ## <div align="center" name="about"></div>About ##
 This is a straigh-forward time tracker backend API meant for a single user. It is not meant for use in a production environment.
-
-------------
 
 ## <div align="center" name="installation">Installation</div> ##
 
@@ -64,7 +58,5 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env-file=./con
 ```
 
 Entering one of these commands into the command prompt will create Docker containers for both the application and the database.
-
-------------
 
 ## <div align="center" name="api">API</div> ##
