@@ -6,8 +6,6 @@ services:
       context: .
     environment:
       APP_PORT: "${APP_PORT}"
-      SDH_USERNAME: "${SDH_USERNAME}"
-      SDH_PASSWORD: "${SDH_PASSWORD}"
       POSTGRES_HOSTNAME: "${POSTGRES_HOSTNAME}"
       POSTGRES_PORT: "${POSTGRES_PORT}"
       POSTGRES_USER: "${POSTGRES_USER}"
