@@ -1,7 +1,12 @@
 const VARS = [
-  'PORT',
+  'APP_PORT',
   'SDH_USERNAME',
-  'SDH_PASSWORD'
+  'SDH_PASSWORD',
+  'POSTGRES_HOSTNAME',
+  'POSTGRES_PORT',
+  'POSTGRES_USER',
+  'POSTGRES_PASSWORD',
+  'POSTGRES_DATABASE'
 ];
 
 function environmentCheck(): void {

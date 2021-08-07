@@ -12,7 +12,7 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter()
   );
-  const PORT = parseInt(process.env.PORT!, 10); // Non-null assertion, because environment variables were checked in a function above
-  await app.listen(PORT);
+  const PORT = parseInt(process.env.APP_PORT!, 10); // Non-null assertion, because environment variables were checked in a function above
+  await app.listen(PORT, '0.0.0.0');
 }
 void bootstrap();

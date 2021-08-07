@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  app:
+    container_name: tt-app
+    build:
+      context: .
+    environment:
+      APP_PORT: "${APP_PORT}"
+      SDH_USERNAME: "${SDH_USERNAME}"
+      SDH_PASSWORD: "${SDH_PASSWORD}"
+      POSTGRES_HOSTNAME: "${POSTGRES_HOSTNAME}"
+      POSTGRES_PORT: "${POSTGRES_PORT}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DATABASE: "${POSTGRES_DATABASE}"
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    links:
+      - "postgres:tt-postgres"
+  postgres:
+    container_name: tt-postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DATABASE}"
