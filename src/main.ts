@@ -7,12 +7,12 @@ import { AppModule } from './app.module';
 import { environmentCheck } from './utils/environmentCheck';
 
 async function bootstrap() {
-  environmentCheck();
+  environmentCheck(); // Check for missing environment variables before attempting to create a server
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter()
   );
-  const PORT = parseInt(process.env.APP_PORT!, 10);
+  const PORT = parseInt(process.env.APP_PORT!, 10); // Non-null assertion, because environment variables were checked in a function above
   await app.listen(PORT, '0.0.0.0');
 }
 void bootstrap();
