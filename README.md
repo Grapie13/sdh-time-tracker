@@ -31,11 +31,13 @@ Environmental variables can be passed in the command line when creating the Dock
 Firstly, open the command prompt in the root directory of the application. After this is done, use one of the following commands:
 
 <p align="center">For development instance of the application:</p>
+
 ```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file=./config/.env up -d
 ```
 
 <p align="center">For production instance of the application:</p>
+
 ```
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env-file=./config/.env up -d
 ```
