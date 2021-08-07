@@ -1,13 +1,26 @@
-# <div align="center">SDH-Time-Tracker</div>
+# <div align="center" name="title">SDH-Time-Tracker</div>
 
 ------------
 
-## <div align="center"></div>About
+## <div align="center" name="contents">Table of Contents</div>
+
+1. [ Title ](#title)
+2. [ Table of Contents ](#contents)
+3. [ About ](#about)
+4. [ Installation ](#installation)
+  1. [ Database ](#database)
+  2. [ Environmental Variables ](#variables)
+  3. [ Installation Process ](#process)
+5. [ API ](#api)
+
+------------
+
+## <div align="center" name="about"></div>About
 This is a straigh-forward time tracker backend API meant for a single user. It is not meant for use in a production environment.
 
 ------------
 
-## <div align="center">Installation</div>
+## <div align="center" name="installation">Installation</div>
 
 <div align="center">
 
@@ -15,10 +28,10 @@ This is a straigh-forward time tracker backend API meant for a single user. It i
 
 </div>
 
-### <div align="center">Database:</div>
+### <div align="center" name="database">Database:</div>
 SDH-Time-Tracker uses Postgres to store tasks.
 
-### <div align="center">Environmental variables:</div>
+### <div align="center" name="variables">Environmental Variables:</div>
 This application uses the following environmental variables:
 - **APP_PORT** - Determines which port the application will run on.
 - **POSTGRES_HOSTNAME** - Hostname for Postgres connection.
@@ -31,7 +44,7 @@ This application uses the following environmental variables:
 
 Environmental variables can be passed in the command line when creating the Docker containers or inside a .env file.
 
-### <div align="center">Installation process:</div>
+### <div align="center" name="process">Installation Process:</div>
 * It is assumed that environmental variables are stored inside a .env file in a config direction inside the root directory.
 Firstly, open the command prompt in the root directory of the application. After this is done, use one of the following commands:
 
@@ -51,4 +64,4 @@ Entering one of these commands into the command prompt will create Docker contai
 
 ------------
 
-## <div align="center">API</div>
+## <div align="center" name="api">API</div>
