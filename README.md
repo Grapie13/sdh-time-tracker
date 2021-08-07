@@ -9,7 +9,7 @@ This is a straigh-forward time tracker backend API meant for a single user. It i
 
 ## <p align="center">Installation</p>
 
-*** Docker is required for these installation instructions.**
+<p align="center">**Docker is required for these installation instructions.**</p>
 
 ### <p align="center">Database:</p>
 SDH-Time-Tracker uses Postgres to store tasks.
