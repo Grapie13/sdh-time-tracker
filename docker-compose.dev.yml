@@ -3,3 +3,5 @@ services:
   app:
     build:
       dockerfile: dev.Dockerfile
+    environment:
+      NODE_ENV: development

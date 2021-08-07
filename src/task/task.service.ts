@@ -3,6 +3,7 @@ import { Task } from 'src/entities/Task.entity';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/createTask.dto';
 import { DeleteTaskDto } from './dto/deleteTask.dto';
+import { GetTaskDto } from './dto/getTask.dto';
 import { UpdateTaskDto } from './dto/updateTask.dto';
 
 @Injectable()
@@ -13,7 +14,14 @@ export class TaskService {
   ) {}
 
   async getTasks(): Promise<Task[]> {
-    return this.taskRepository.find();
+    // Could be improved to accept task order from request query.
+    return this.taskRepository.find({
+      order: { id: 'ASC' }
+    });
+  }
+
+  async getTask(taskDto: GetTaskDto): Promise<Task | undefined> {
+    return this.taskRepository.findOne({ id: taskDto.id });
   }
 
   async getTrackedTask(): Promise<Task | undefined> {
@@ -23,10 +31,13 @@ export class TaskService {
   }
 
   async createTask(taskDto: CreateTaskDto): Promise<Task> {
+    const task = this.taskRepository.create(taskDto);
+    // If a user creates a task and tracks it,
+    // untrack the currently tracked task.
     if (taskDto.tracked) {
       await this.untrackLastTracked();
+      task.startedAt = new Date().toISOString();
     }
-    const task = this.taskRepository.create(taskDto);
     await this.taskRepository.save(task);
     return task;
   }
@@ -36,11 +47,18 @@ export class TaskService {
     if (!updatedTask) {
       return undefined;
     }
-    if (taskDto.tracked) {
+    // Only untrack a currently tracked task
+    // if the task a user is updating is not tracked.
+    if (taskDto.tracked && !updatedTask.tracked) {
       await this.untrackLastTracked();
-      updatedTask.startedAt = new Date().toUTCString();
+      updatedTask.tracked = taskDto.tracked;
+      updatedTask.startedAt = new Date().toISOString();
     }
-    updatedTask.tracked = taskDto.tracked ?? updatedTask.tracked;
+    // Strict check to make sure "tracked" is not undefined, null or another falsy value.
+    if (taskDto.tracked === false) {
+      updatedTask.tracked = taskDto.tracked;
+      updatedTask.finishedAt = new Date().toISOString();
+    }
     updatedTask.name = taskDto.newTaskName ?? updatedTask.name;
     await this.taskRepository.save(updatedTask);
     return updatedTask;
@@ -54,7 +72,7 @@ export class TaskService {
     const lastTracked = await this.taskRepository.findOne({ tracked: true });
     if (lastTracked) {
       lastTracked.tracked = false;
-      lastTracked.finishedAt = new Date().toUTCString();
+      lastTracked.finishedAt = new Date().toISOString();
       await this.taskRepository.save(lastTracked);
     }
   }

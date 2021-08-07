@@ -22,7 +22,7 @@ class Task {
 
   @Column({
     type: 'timestamptz',
-    default: new Date().toUTCString()
+    default: new Date().toISOString()
   })
   createdAt!: string; // createdAt is a string due to the fact that it's a timestamp
 
