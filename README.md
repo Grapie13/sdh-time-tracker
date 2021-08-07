@@ -100,15 +100,19 @@ Returns a task by its ID.
 - **URL**
 
     /v1/tasks
+
 - **Method**
 
     `GET`
+
 - **URL Params**
 
     `id=[integer]`
+
 - **Request Body**
 
     None.
+
 - **Success Response**
     - **Code**: 200
 
