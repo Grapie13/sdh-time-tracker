@@ -57,7 +57,7 @@ export class TaskService {
       updatedTask.tracked = taskDto.tracked;
       updatedTask.finishedAt = new Date().toISOString();
     }
-    updatedTask.name = taskDto.newTaskName ?? updatedTask.name;
+    updatedTask.name = taskDto.name ?? updatedTask.name;
     await this.taskRepository.save(updatedTask);
     return updatedTask;
   }
