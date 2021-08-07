@@ -89,6 +89,8 @@ Returns a list of all tasks.
 - **Error Response**
     None.
 
+------
+
 ### <div align="center" name="task-by-id">Get Task By ID</div>
 Returns a task by its ID.
 
@@ -127,6 +129,8 @@ Returns a task by its ID.
     }
 ```
 
+------
+
 ### <div align="center" name="tracked-task">Get Tracked Task</div>
 Returns a currently tracked task.
 
@@ -163,6 +167,8 @@ Returns a currently tracked task.
     }
 ```
 
+------
+
 ### <div align="center" name="create-task">Create Task</div>
 Creates a new task.
 
@@ -191,3 +197,5 @@ Creates a new task.
 ```
 
 - **Error Response**: None.
+
+------
