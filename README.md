@@ -6,9 +6,9 @@
 2. [ Table of Contents ](#contents)
 3. [ About ](#about)
 4. [ Installation ](#installation)
-  1. [ Database ](#database)
-  2. [ Environmental Variables ](#variables)
-  3. [ Installation Process ](#process)
+     1. [ Database ](#database)
+     2. [ Environmental Variables ](#variables)
+     3. [ Installation Process ](#process)
 5. [ API ](#api)
 
 ## <div align="center" name="about"></div>About ##
