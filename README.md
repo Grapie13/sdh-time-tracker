@@ -69,7 +69,7 @@ Returns a list of all tasks.
     `GET`
 - **URL Params**
     None.
-- **Data Params**
+- **Request Body**
     None.
 - **Success Response**
     - **Code**: 200
@@ -88,5 +88,55 @@ Returns a list of all tasks.
                 "finishedAt": null
             }
         ]
+    }
+```
+
+- **Error Response**
+    None.
+
+### <div align="center" name="all-tasks">Get Task By ID</div>
+Returns a task by its ID.
+
+- **URL**
+
+    /v1/tasks
+- **Method**
+
+    `GET`
+- **URL Params**
+
+    `id=[integer]`
+- **Request Body**
+
+    None.
+- **Success Response**
+    - **Code**: 200
+
+      **Response**: 
+
+```
+    {
+        "tasks": [
+            {
+                "id": 1,
+                "name": "take out trash",
+                "tracked": false,
+                "createdAt": "2021-08-07T22:56:21.243Z",
+                "startedAt": null,
+                "finishedAt": null
+            }
+        ]
+    }
+```
+
+- **Error Response**
+    - **Code**: 404 Not Found
+
+      **Response**:
+
+```
+    {
+        "statusCode": 404,
+        "message": "Task not found"
     }
 ```
