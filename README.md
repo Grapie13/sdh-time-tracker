@@ -57,3 +57,20 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env-file=./con
 Entering one of these commands into the command prompt will create Docker containers for both the application and the database.
 
 ## <div align="center" name="api">API</div> ##
+
+<div align="center">Endpoints work only with JSON data.</div>
+
+### <div align="center" name="all-tasks">Get All Tasks</div>
+Returns a list of all tasks.
+
+- **URL**
+    /v1/tasks
+- **Method**
+    `GET`
+- **URL Params**
+    None.
+- **Data Params**
+    None.
+- **Success Response**
+    - **Code**: 200
+      **Response**: `{ tasks: [{ id: 1, name: "Test task", tracked: false }] }`
