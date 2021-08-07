@@ -3,6 +3,7 @@
 ------------
 
 ## <div align="center" name="contents">Table of Contents</div>
+<div align="center">
 
 1. [ Title ](#title)
 2. [ Table of Contents ](#contents)
@@ -12,6 +13,8 @@
   2. [ Environmental Variables ](#variables)
   3. [ Installation Process ](#process)
 5. [ API ](#api)
+
+</div>
 
 ------------
 
