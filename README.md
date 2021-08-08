@@ -270,9 +270,9 @@ Updates an existing task.
     }
 ```
 
-    - **Code**: 400
+- **Code**: 400
 
-      **Example Response**:
+    **Example Response**:
 
 ```
     {
