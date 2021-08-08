@@ -103,8 +103,7 @@ Returns a list of all tasks.
     }
 ```
 
-- **Error Response**
-    None.
+- **Error Response**: None.
 
 ------
 
@@ -302,6 +301,7 @@ Deletes an existing task.
 
 - **Error Response**:
     - **Code**: 404
+    - 
       **Example Response**:
 
 ```
