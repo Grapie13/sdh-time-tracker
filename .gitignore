@@ -2,9 +2,6 @@
 /dist
 /node_modules
 
-# Config
-/config
-
 # Logs
 logs
 *.log
