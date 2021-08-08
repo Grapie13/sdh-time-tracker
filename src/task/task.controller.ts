@@ -2,11 +2,11 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch,
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/createTask.dto';
 import { UpdateTaskDto } from './dto/updateTask.dto';
-import { TaskArray, SingleTask, DeletedTaskMsg } from 'src/utils/interfaces/task.interfaces';
-import { Task } from 'src/entities/Task.entity';
-import { JoiValidationPipe } from 'src/pipes/joiValidation.pipe';
-import { createTaskSchema } from 'src/validation/createTaskSchema';
-import { updateTaskSchema } from 'src/validation/updateTaskSchema';
+import { TaskArray, SingleTask, DeletedTaskMsg } from '../utils/interfaces/task.interfaces';
+import { Task } from '../entities/Task.entity';
+import { JoiValidationPipe } from '../pipes/joiValidation.pipe';
+import { createTaskSchema } from '../validation/createTaskSchema';
+import { updateTaskSchema } from '../validation/updateTaskSchema';
 
 @Controller('/v1/tasks')
 export class TaskController {
