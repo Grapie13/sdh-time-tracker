@@ -17,7 +17,8 @@
      5. [ Update Task ](#update-task)
      6. [ Delete Task ](#delete-task)
 6. [ Testing ](#testing)
-7. [ License ](#license)
+7. [ Concerns and Expansion Possibilities ](#concerns)
+8. [ License ](#license)
 
 ## <div align="center" name="about"></div>About ##
 This is a straigh-forward time tracker backend API meant for a single user. It is able to create, update, delete and fetch tasks defined by the user.
@@ -313,6 +314,22 @@ npm run test:cov
 <div align="center">Screenshot of coverage tests ran by me:</div>
 
 ![Test coverage](https://i.imgur.com/jpab0LE.png "Test coverage")
+
+## <div align="center" name="concerns">Concerns and Expansion Possibilities</div>
+During the development of this application arose a few concerns and possibilities to expand the application.
+
+Concerns:
+- I was unable to create migrations for TypeORM inside NestJS
+- Database container does not contain any volume, which means it's not persistent and any restart will erase saved data
+- The application does not have any form of authentication, which means anyone can access tasks
+- There are probably better ways to check whether a task exists or not (using pipes), but I'm not proficient enough with Nest to implement them
+
+Expansion Possibilities:
+- Authentication should be implemented
+- Implementing authentication would make it possible to make the application multi-user
+- There could be some sort of caching inserted to lessen response times
+- Sorting could improve the accessability
+- Paging could improve readability
 
 ## <div align="center" name="license">License</div>
 
