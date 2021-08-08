@@ -29,7 +29,10 @@ export class TaskService {
   }
 
   async createTask(taskDto: CreateTaskDto): Promise<Task> {
-    const task = this.taskRepository.create(taskDto);
+    const task = this.taskRepository.create({
+      ...taskDto,
+      createdAt: new Date().toISOString()
+    });
     // If a user creates a task and tracks it,
     // untrack the currently tracked task.
     if (taskDto.tracked) {
