@@ -16,7 +16,8 @@
      4. [ Create Task ](#create-task)
      5. [ Update Task ](#update-task)
      6. [ Delete Task ](#delete-task)
-6. [ License ](#license)
+6. [ Testing ](#testing)
+7. [ License ](#license)
 
 ## <div align="center" name="about"></div>About ##
 This is a straigh-forward time tracker backend API meant for a single user. It is able to create, update, delete and fetch tasks defined by the user.
@@ -53,7 +54,13 @@ Firstly, open the command prompt in the root directory of the application. After
 <div align="center">For development instance of the application:</div>
 
 ```
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file=./config/.env up -d
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file=./config/dev.env up -d
+```
+
+<div align="center">For test instance of the application:</div>
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.test.yml --env-file=./config/test.env up -d
 ```
 
 <div align="center">For production instance of the application:</div>
@@ -279,6 +286,32 @@ Deletes an existing task.
         "message": "Task not found"
     }
 ```
+
+## <div align="center" name="testing">Testing</div>
+This application contains integration and unit tests. Every test is passing, which is additionally ensured by GitHub workflow.
+
+To run tests yourself use one of the following commands in the root directory of the application:
+<div align="center">Unit tests:</div>
+
+```
+npm run test
+```
+
+<div align="center">Integration tests (to run integration tests, you need to create application and database containers):</div>
+
+```
+npm run test:e2e
+```
+
+<div align="center">Unit test coverage:</div>
+
+```
+npm run test:cov
+```
+
+<div align="center">Screenshot of coverage tests ran by me:</div>
+
+![Test coverage](https://i.imgur.com/jpab0LE.png "Test coverage")
 
 ## <div align="center" name="license">License</div>
 

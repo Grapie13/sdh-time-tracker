@@ -5,8 +5,9 @@ import { loadEnv } from './helpers/loadEnv';
 import { environmentCheck } from '../../src/utils/environmentCheck';
 import { jsonHeaders } from './helpers/headers';
 import { checkError } from './helpers/checkError';
+import { createTask } from './helpers/createTask';
 
-describe('POST /v1/tasks', () => {
+describe('PATCH /v1/tasks/:id', () => {
   let connection: Connection;
   let queryRunner: QueryRunner;
 
@@ -41,10 +42,24 @@ describe('POST /v1/tasks', () => {
     await connection.close();
   });
 
+  it('should return a 404 status if the updated task does not exist', async () => {
+    try {
+      await got('http://localhost:3000/v1/tasks/500', {
+        method: 'PATCH',
+        headers: jsonHeaders,
+        body: JSON.stringify({ name: 'Updated task' })
+      });
+      throw new Error('It did not throw');
+    } catch (err) {
+      checkError(err, 404, 'Task not found');
+    }
+  });
+
   it('should return a 400 status if "name" parameter is not valid', async () => {
     try {
-      await got('http://localhost:3000/v1/tasks', {
-        method: 'POST',
+      const task = await createTask(taskParams.name);
+      await got(`http://localhost:3000/v1/tasks/${task.id}`, {
+        method: 'PATCH',
         headers: jsonHeaders,
         body: JSON.stringify({ name: 5 })
       });
@@ -54,21 +69,23 @@ describe('POST /v1/tasks', () => {
     }
 
     try {
-      await got('http://localhost:3000/v1/tasks', {
-        method: 'POST',
+      const task = await createTask(taskParams.name);
+      await got(`http://localhost:3000/v1/tasks/${task.id}`, {
+        method: 'PATCH',
         headers: jsonHeaders,
         body: JSON.stringify({ nameee: 'Test task' })
       });
       throw new Error('It did not throw');
     } catch (err) {
-      checkError(err, 400, '"name" is required');
+      checkError(err, 400, '"nameee" is not allowed');
     }
   });
 
   it('should return a 400 status if "tracked" parameter is not valid', async () => {
     try {
-      await got('http://localhost:3000/v1/tasks', {
-        method: 'POST',
+      const task = await createTask(taskParams.name);
+      await got(`http://localhost:3000/v1/tasks/${task.id}`, {
+        method: 'PATCH',
         headers: jsonHeaders,
         body: JSON.stringify({ name: taskParams.name, tracked: 5 })
       });
@@ -78,19 +95,23 @@ describe('POST /v1/tasks', () => {
     }
   });
 
-  it('should create a task', async () => {
-    const res = await got('http://localhost:3000/v1/tasks', {
-      method: 'POST',
+  it('should return a 200 status with an updated task', async () => {
+    const createdTask = await createTask(taskParams.name);
+    expect(createdTask.tracked).to.eq(false);
+    expect(createdTask.startedAt).to.be.null;
+    const res = await got(`http://localhost:3000/v1/tasks/${createdTask.id}`, {
+      method: 'PATCH',
       headers: jsonHeaders,
-      body: JSON.stringify(taskParams)
+      body: JSON.stringify({ name: 'Pet the cat', tracked: true })
     });
-    expect(res.statusCode).to.eq(201);
-    const { task } = JSON.parse(res.body);
-    expect(task).not.to.be.undefined;
-    expect(task.name).to.eq(taskParams.name);
-    expect(task.tracked).to.eq(taskParams.tracked);
-    expect(task.createdAt).not.to.be.null;
-    expect(task.startedAt).not.to.be.null;
-    expect(task.finishedAt).to.be.null;
+    expect(res.statusCode).to.eq(200);
+    const { task: updatedTask } = JSON.parse(res.body);
+    expect(updatedTask.id).to.eq(createdTask.id);
+    expect(updatedTask.name).not.to.eq(createdTask.name);
+    expect(updatedTask.name).to.eq('Pet the cat');
+    expect(updatedTask.tracked).to.eq(true);
+    expect(updatedTask.createdAt).to.eq(createdTask.createdAt);
+    expect(updatedTask.startedAt).not.to.be.null;
+    expect(updatedTask.finishedAt).to.be.null;
   });
 });

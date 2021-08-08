@@ -3,15 +3,18 @@ import { expect } from 'chai';
 import { Connection, createConnection, QueryRunner } from 'typeorm';
 import { loadEnv } from './helpers/loadEnv';
 import { environmentCheck } from '../../src/utils/environmentCheck';
+import { checkError } from './helpers/checkError';
 import { createTask } from './helpers/createTask';
 
-describe('GET /v1/tasks', () => {
+describe('DELETE /v1/tasks/:id', () => {
   let connection: Connection;
   let queryRunner: QueryRunner;
 
   before(async () => {
     loadEnv();
     environmentCheck(); // Check environment variables, just in case.
+    // Creating a TypeORM connection to the database,
+    // so that it can be cleaned before each test.
     connection = await createConnection({
       type: 'postgres',
       host: 'localhost',
@@ -33,27 +36,29 @@ describe('GET /v1/tasks', () => {
     await connection.close();
   });
 
-  it('should return an empty array if no tasks were created', async () => {
-    const res = await got('http://localhost:3000/v1/tasks');
-    expect(res.statusCode).to.eq(200);
-    const { tasks } = JSON.parse(res.body);
-    expect(tasks).not.to.be.undefined;
-    expect(tasks.length).to.eq(0);
+  it('should return a 404 status if the updated task does not exist', async () => {
+    try {
+      await got('http://localhost:3000/v1/tasks/123', {
+        method: 'DELETE'
+      });
+      throw new Error('It did not throw');
+    } catch (err) {
+      checkError(err, 404, 'Task not found');
+    }
   });
 
-  it('should return an array of existing tasks', async () => {
-    await createTask('Test task');
-    let res = await got('http://localhost:3000/v1/tasks');
-    expect(res.statusCode).to.eq(200);
-    const { tasks: firstResTasks } = JSON.parse(res.body);
-    expect(firstResTasks).not.to.be.undefined;
-    expect(firstResTasks.length).to.eq(1);
-    const createdTask = await createTask('Test task');
-    res = await got('http://localhost:3000/v1/tasks');
-    expect(res.statusCode).to.eq(200);
-    const { tasks: secondResTasks } = JSON.parse(res.body);
-    expect(secondResTasks).not.to.be.undefined;
-    expect(secondResTasks.length).to.eq(2);
-    expect(secondResTasks[1].name).to.eq(createdTask.name);
+  it('should delete a task', async () => {
+    try {
+      const createdTask = await createTask('Test task');
+      const res = await got(`http://localhost:3000/v1/tasks/${createdTask.id}`, {
+        method: 'DELETE'
+      });
+      expect(res.statusCode).to.eq(200);
+      const { message } = JSON.parse(res.body);
+      expect(message).to.eq('Task deleted successfully');
+      await got(`http://localhost:3000/v1/tasks/${createdTask.id}`);
+    } catch (err) {
+      checkError(err, 404, 'Task not found');
+    }
   });
 });

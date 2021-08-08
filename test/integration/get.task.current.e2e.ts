@@ -4,8 +4,9 @@ import { Connection, createConnection, QueryRunner } from 'typeorm';
 import { loadEnv } from './helpers/loadEnv';
 import { environmentCheck } from '../../src/utils/environmentCheck';
 import { createTask } from './helpers/createTask';
+import { checkError } from './helpers/checkError';
 
-describe('GET /v1/tasks', () => {
+describe('GET /v1/tasks/current', () => {
   let connection: Connection;
   let queryRunner: QueryRunner;
 
@@ -33,27 +34,25 @@ describe('GET /v1/tasks', () => {
     await connection.close();
   });
 
-  it('should return an empty array if no tasks were created', async () => {
-    const res = await got('http://localhost:3000/v1/tasks');
-    expect(res.statusCode).to.eq(200);
-    const { tasks } = JSON.parse(res.body);
-    expect(tasks).not.to.be.undefined;
-    expect(tasks.length).to.eq(0);
+  it('should return a 404 status if the task does not exist', async () => {
+    try {
+      await got('http://localhost:3000/v1/tasks/current');
+      throw new Error('It did not throw');
+    } catch (err) {
+      checkError(err, 404, 'Task not found');
+    }
   });
 
-  it('should return an array of existing tasks', async () => {
-    await createTask('Test task');
-    let res = await got('http://localhost:3000/v1/tasks');
+  it('should return a task with its details', async () => {
+    const taskName = 'Test task';
+    await createTask(taskName, true);
+    const res = await got('http://localhost:3000/v1/tasks/current');
     expect(res.statusCode).to.eq(200);
-    const { tasks: firstResTasks } = JSON.parse(res.body);
-    expect(firstResTasks).not.to.be.undefined;
-    expect(firstResTasks.length).to.eq(1);
-    const createdTask = await createTask('Test task');
-    res = await got('http://localhost:3000/v1/tasks');
-    expect(res.statusCode).to.eq(200);
-    const { tasks: secondResTasks } = JSON.parse(res.body);
-    expect(secondResTasks).not.to.be.undefined;
-    expect(secondResTasks.length).to.eq(2);
-    expect(secondResTasks[1].name).to.eq(createdTask.name);
+    const { task } = JSON.parse(res.body);
+    expect(task.name).to.eq(taskName);
+    expect(task.tracked).to.eq(true);
+    expect(task.createdAt).not.to.be.null;
+    expect(task.startedAt).not.to.be.null;
+    expect(task.finishedAt).to.be.null;
   });
 });
