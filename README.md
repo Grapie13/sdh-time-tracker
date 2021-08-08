@@ -176,7 +176,9 @@ Creates a new task.
 - **Method**: `POST`
 - **Request Body**:
     - **Parameters**:
+
         `name` - sets a taks's name (required)
+        
         `tracked` - sets whether a task is tracked (optional)
 - **Success Response**:
     - **Code**: 201
