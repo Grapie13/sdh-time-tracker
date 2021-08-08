@@ -78,7 +78,7 @@ Entering one of these commands into the command prompt will create Docker contai
 ### <div align="center" name="all-tasks">Get All Tasks</div>
 Returns a list of all tasks.
 
-- **URL**: /v1/tasks
+- **URL**: ``/v1/tasks``
 - **Method**: `GET`
 - **Request Body**: None.
 - **Success Response**:
@@ -109,7 +109,7 @@ Returns a list of all tasks.
 ### <div align="center" name="task-by-id">Get Task By ID</div>
 Returns a task by its ID.
 
-- **URL**: /v1/tasks/:id
+- **URL**: ``/v1/tasks/:id``
 - **Method**: `GET`
 - **Request Body**: None.
 - **Success Response**:
@@ -149,7 +149,7 @@ Returns a task by its ID.
 ### <div align="center" name="tracked-task">Get Tracked Task</div>
 Returns a currently tracked task.
 
-- **URL**: /v1/tasks/current
+- **URL**: ``/v1/tasks/current``
 - **Method**: `GET`
 - **Request Body**: None.
 - **Success Response**:
@@ -187,7 +187,7 @@ Returns a currently tracked task.
 ### <div align="center" name="create-task">Create Task</div>
 Creates a new task.
 
-- **URL**: /v1/tasks
+- **URL**: ``/v1/tasks``
 - **Method**: `POST`
 - **Request Body**:
     - **Parameters**:
@@ -220,7 +220,7 @@ Creates a new task.
 ### <div align="center" name="update-task">Update Task</div>
 Updates an existing task.
 
-- **URL**: /v1/tasks/:id
+- **URL**: ``/v1/tasks/:id``
 - **Method**: `PATCH`
 - **Request Body**:
     - **Parameters**:
@@ -262,7 +262,7 @@ Updates an existing task.
 ### <div align="center" name="delete-task">Delete Task</div>
 Deletes an existing task.
 
-- **URL**: /v1/tasks/:id
+- **URL**: ``/v1/tasks/:id``
 - **Method**: `DELETE`
 - **Request Body**: None.
 - **Success Response**:
