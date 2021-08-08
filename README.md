@@ -260,6 +260,7 @@ Updates an existing task.
 
 - **Error Response**:
     - **Code**: 404
+
       **Example Response**:
 
 ```
@@ -271,7 +272,7 @@ Updates an existing task.
 
 - **Code**: 400
 
-**Example Response**:
+    **Example Response**:
 
 ```
     {
