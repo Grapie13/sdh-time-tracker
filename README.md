@@ -48,7 +48,8 @@ This application uses the following environmental variables:
 Environmental variables can be passed in the command line when creating the Docker containers or inside a .env file.
 
 ### <div align="center" name="process">Installation Process:</div> ###
-* It is assumed that environmental variables are stored inside a .env file in a config direction inside the root directory.
+* It is assumed that environmental variables are stored inside a .env file in a config direction inside the root directory. *
+
 Firstly, open the command prompt in the root directory of the application. After this is done, use one of the following commands:
 
 <div align="center">For development instance of the application:</div>
