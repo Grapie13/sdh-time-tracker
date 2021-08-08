@@ -10,9 +10,16 @@
      2. [ Environmental Variables ](#variables)
      3. [ Installation Process ](#process)
 5. [ API ](#api)
+     1. [ Get All Tasks ](#all-tasks)
+     2. [ Get Task By ID ](#task-by-id)
+     3. [ Get Tracked Task ](#tracked-task)
+     4. [ Create Task ](#create-task)
+     5. [ Update Task ](#update-task)
+     6. [ Delete Task ](#delete-task)
 
 ## <div align="center" name="about"></div>About ##
-This is a straigh-forward time tracker backend API meant for a single user. It is not meant for use in a production environment.
+This is a straigh-forward time tracker backend API meant for a single user. It is able to create, update, delete and fetch tasks defined by the user.
+As it is a time tracking application, it also keeps the task's creation time, when it was started, and the finish time.
 
 ## <div align="center" name="installation">Installation</div> ##
 
@@ -201,3 +208,73 @@ Creates a new task.
 - **Error Response**: None.
 
 ------
+
+### <div align="center" name="update-task">Update Task</div>
+Updates an existing task.
+
+- **URL**: /v1/tasks/:id
+- **Method**: `PATCH`
+- **Request Body**:
+    - **Parameters**:
+
+        `name` - updates a taks's name (optional)
+        
+        `tracked` - updates whether a task is tracked (optional)
+- **Success Response**:
+    - **Code**: 200
+
+      **Response**: 
+
+```
+    {
+        "task": {
+            "id": 1,
+            "name": "pet the cat",
+            "tracked": "true",
+            "createdAt": "2021-08-08T10:31:00.921Z",
+            "startedAt": "2021-08-08T10:32:04.564Z",
+            "finishedAt": null
+        }
+    }
+```
+
+- **Error Response**:
+    - **Code**: 404
+      **Response**:
+
+```
+    {
+        "statusCode": 404,
+        "message": "Task not found"
+    }
+```
+
+------
+
+### <div align="center" name="delete-task">Delete Task</div>
+Deletes an existing task.
+
+- **URL**: /v1/tasks/:id
+- **Method**: `DELETE`
+- **Request Body**: None.
+- **Success Response**:
+    - **Code**: 200
+
+      **Response**: 
+
+```
+    {
+        "message": "Task deleted successfully"
+    }
+```
+
+- **Error Response**:
+    - **Code**: 404
+      **Response**:
+
+```
+    {
+        "statusCode": 404,
+        "message": "Task not found"
+    }
+```
