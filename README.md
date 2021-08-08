@@ -86,7 +86,7 @@ Returns a list of all tasks.
 - **Success Response**:
     - **Code**: 200
 
-      **Response**: 
+      **Example Response**: 
 
 ```
     {
@@ -117,7 +117,7 @@ Returns a task by its ID.
 - **Success Response**:
     - **Code**: 200
 
-      **Response**: 
+      **Example Response**: 
 
 ```
     {
@@ -137,7 +137,7 @@ Returns a task by its ID.
 - **Error Response**:
     - **Code**: 404 Not Found
 
-      **Response**:
+      **Example Response**:
 
 ```
     {
@@ -157,7 +157,7 @@ Returns a currently tracked task.
 - **Success Response**:
     - **Code**: 200
 
-      **Response**: 
+      **Example Response**: 
 
 ```
     {
@@ -175,7 +175,7 @@ Returns a currently tracked task.
 - **Error Response**:
     - **Code**: 404 Not Found
 
-      **Response**:
+      **Example Response**:
 
 ```
     {
@@ -200,7 +200,7 @@ Creates a new task.
 - **Success Response**:
     - **Code**: 201
 
-      **Response**: 
+      **Example Response**: 
 
 ```
     {
@@ -215,7 +215,17 @@ Creates a new task.
     }
 ```
 
-- **Error Response**: None.
+- **Error Response**:
+    - **Code**: 400
+
+      **Example Response**:
+
+```
+    {
+        "statusCode": 400,
+        "message": "\"name\" must be a string"
+    }
+```
 
 ------
 
@@ -233,7 +243,7 @@ Updates an existing task.
 - **Success Response**:
     - **Code**: 200
 
-      **Response**: 
+      **Example Response**: 
 
 ```
     {
@@ -250,12 +260,23 @@ Updates an existing task.
 
 - **Error Response**:
     - **Code**: 404
-      **Response**:
+      **Example Response**:
 
 ```
     {
         "statusCode": 404,
         "message": "Task not found"
+    }
+```
+
+- **Code**: 400
+
+**Example Response**:
+
+```
+    {
+        "statusCode": 400,
+        "message": "\"name\" must be a string"
     }
 ```
 
@@ -270,7 +291,7 @@ Deletes an existing task.
 - **Success Response**:
     - **Code**: 200
 
-      **Response**: 
+      **Example Response**: 
 
 ```
     {
@@ -280,7 +301,7 @@ Deletes an existing task.
 
 - **Error Response**:
     - **Code**: 404
-      **Response**:
+      **Example Response**:
 
 ```
     {
