@@ -2,8 +2,11 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Patch,
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/createTask.dto';
 import { UpdateTaskDto } from './dto/updateTask.dto';
-import { TaskArray, SingleTask, DeletedTaskMsg } from 'src/utils/interfaces/task.interfaces';
-import { Task } from 'src/entities/Task.entity';
+import { TaskArray, SingleTask, DeletedTaskMsg } from '../utils/interfaces/task.interfaces';
+import { Task } from '../entities/Task.entity';
+import { JoiValidationPipe } from '../pipes/joiValidation.pipe';
+import { createTaskSchema } from '../validation/createTaskSchema';
+import { updateTaskSchema } from '../validation/updateTaskSchema';
 
 @Controller('/v1/tasks')
 export class TaskController {
@@ -37,7 +40,7 @@ export class TaskController {
   }
 
   @Post()
-  async createTask(@Body() body: CreateTaskDto): Promise<SingleTask> {
+  async createTask(@Body(new JoiValidationPipe(createTaskSchema)) body: CreateTaskDto): Promise<SingleTask> {
     const task = await this.taskService.createTask(body);
     return {
       task
@@ -46,7 +49,7 @@ export class TaskController {
 
   @Patch('/:id')
   async updateTask(@Param('id') id: number,
-    @Body() body: UpdateTaskDto
+    @Body(new JoiValidationPipe(updateTaskSchema)) body: UpdateTaskDto
   ): Promise<SingleTask> {
     const taskDto: UpdateTaskDto = {
       ...body,
