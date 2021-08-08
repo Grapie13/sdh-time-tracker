@@ -1,6 +1,6 @@
-# <div align="center" name="title">SDH-Time-Tracker</div> #
+# <div align="center" name="title">SDH-Time-Tracker</div>
 
-## <div align="center" name="contents">Table of Contents</div> ##
+## <div align="center" name="contents">Table of Contents</div>
 
 1. [ Title ](#title)
 2. [ Table of Contents ](#contents)
@@ -20,11 +20,11 @@
 7. [ Concerns and Expansion Possibilities ](#concerns)
 8. [ License ](#license)
 
-## <div align="center" name="about"></div>About ##
+## <div align="center" name="about">About</div>
 This is a straigh-forward time tracker backend API meant for a single user. It is able to create, update, delete and fetch tasks defined by the user.
 As it is a time tracking application, it also keeps the task's creation time, when it was started, and the finish time.
 
-## <div align="center" name="installation">Installation</div> ##
+## <div align="center" name="installation">Installation</div>
 
 <div align="center">
 
@@ -32,10 +32,10 @@ As it is a time tracking application, it also keeps the task's creation time, wh
 
 </div>
 
-### <div align="center" name="database">Database:</div> ###
+### <div align="center" name="database">Database:</div>
 SDH-Time-Tracker uses Postgres to store tasks.
 
-### <div align="center" name="variables">Environmental Variables:</div> ###
+### <div align="center" name="variables">Environmental Variables:</div>
 This application uses the following environmental variables:
 - **APP_PORT** - Determines which port the application will run on.
 - **POSTGRES_HOSTNAME** - Hostname for Postgres connection.
@@ -48,7 +48,7 @@ This application uses the following environmental variables:
 
 Environmental variables can be passed in the command line when creating the Docker containers or inside a .env file.
 
-### <div align="center" name="process">Installation Process:</div> ###
+### <div align="center" name="process">Installation Process:</div>
 **It is assumed that environmental variables are stored inside a .env file in a config direction inside the root directory.**
 
 Firstly, open the command prompt in the root directory of the application. After this is done, use one of the following commands:
@@ -73,7 +73,7 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml --env-file=./con
 
 Entering one of these commands into the command prompt will create Docker containers for both the application and the database.
 
-## <div align="center" name="api">API</div> ##
+## <div align="center" name="api">API</div>
 
 <div align="center">Endpoints work only with JSON data. The application uses ISO strings to work with dates.</div>
 
