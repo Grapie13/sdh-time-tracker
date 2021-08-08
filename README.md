@@ -58,7 +58,7 @@ Entering one of these commands into the command prompt will create Docker contai
 
 ## <div align="center" name="api">API</div> ##
 
-<div align="center">Endpoints work only with JSON data.</div>
+<div align="center">Endpoints work only with JSON data. The application uses ISO strings to work with dates.</div>
 
 ### <div align="center" name="all-tasks">Get All Tasks</div>
 Returns a list of all tasks.
