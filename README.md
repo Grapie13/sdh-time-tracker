@@ -348,7 +348,7 @@ Concerns:
 
 Expansion Possibilities:
 - Authentication should be implemented
-- Implementing authentication would make it possible to make the application multi-user
+- The application could be turned into a multi-user one (after implementing authentication)
 - There could be some sort of caching inserted to lessen response times
 - Sorting could improve the accessability
 - Paging could improve readability
