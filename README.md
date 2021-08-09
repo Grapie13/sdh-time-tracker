@@ -21,7 +21,7 @@
 8. [ License ](#license)
 
 ## <div align="center" name="about">About</div>
-This is a straigh-forward time tracker backend API meant for a single user. It is able to create, update, delete and fetch tasks defined by the user.
+This is a straight-forward time tracker backend API meant for a single user. It is able to create, update, delete and fetch tasks defined by the user.
 As it is a time tracking application, it also keeps the task's creation time, when it was started, and the finish time.
 
 ## <div align="center" name="installation">Installation</div>
